@@ -19,13 +19,18 @@ TEST_CASE("Playfair Cipher encryption with XX", "[playfair]") {
   REQUIRE( pc.applyCipher("ABXXD", CipherMode::Encrypt) == "MCVSVF");
 }
 
-TEST_CASE("Encrypting words ending in Z", "[playfair error]") {
+TEST_CASE("Playfair Cipher encryption with AXX", "[playfair]") {
   PlayfairCipher pc {"jam"};
-  REQUIRE( pc.applyCipher("JAZZ", CipherMode::Encrypt) == "JAZZ");
+  REQUIRE( pc.applyCipher("AXXB", CipherMode::Encrypt) == "MWYM");
 }
 
-TEST_CASE("Decrypting words with an odd number of letters", "[playfair error]") {
+TEST_CASE("Encrypting words ending in Z", "[playfair]") {
   PlayfairCipher pc {"jam"};
-  REQUIRE( pc.applyCipher("ABCDE", CipherMode::Decrypt) == "ABCDE");
+  REQUIRE( pc.applyCipher("JAZZ", CipherMode::Encrypt) == "AMVYVY");
+}
+
+TEST_CASE("Decrypting words with an odd number of letters", "[playfair]") {
+  PlayfairCipher pc {"jam"};
+  REQUIRE( pc.applyCipher("ABCDE", CipherMode::Decrypt) == "IMIHHW");
 }
 
